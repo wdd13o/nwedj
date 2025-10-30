@@ -1,0 +1,129 @@
+/* Admin panel styles (keeps site look simple and readable) */
+/* Admin panel — professional theme and animations */
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #4f46e5; /* indigo */
+  --accent-2: #06b6d4; /* teal */
+  --glass: rgba(255,255,255,0.8);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;padding:28px;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;color:#0f172a;background:linear-gradient(180deg,#f8fafc 0%,#f3f6fb 100%);
+}
+.admin-wrapper{max-width:1180px;margin:0 auto}
+.admin-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.admin-header h1{margin:0;font-size:1.4rem}
+.hint{color:var(--muted);font-size:0.95rem}
+.admin-main{margin-top:20px}
+
+/* Login page specific styles */
+#loginSection{
+  max-width:420px;
+  margin:30px auto;
+  padding:28px;
+  border-radius:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.9),var(--card));
+  box-shadow:0 12px 30px rgba(2,6,23,0.08);
+  transform:translateY(6px);
+  animation:floatIn .52s cubic-bezier(.2,.9,.3,1) forwards;
+}
+#loginSection h2{margin:0 0 12px 0;font-size:1.25rem;color:#0f172a}
+#loginSection .note{margin-top:12px;color:var(--muted);font-size:.9rem}
+#adminLoginForm{display:flex;flex-direction:column;gap:12px}
+#adminLoginForm label{font-weight:600;color:var(--muted);font-size:.95rem}
+#adminLoginForm input[type=password]{padding:12px;border-radius:10px;border:1px solid #e6e9ef;background:#fff;box-shadow:inset 0 1px 0 rgba(16,24,40,0.02);transition:box-shadow .18s ease,border-color .18s ease,transform .12s ease}
+#adminLoginForm input:focus{outline:none;border-color:var(--accent-2);box-shadow:0 8px 20px rgba(79,70,229,0.06);transform:translateY(-1px)}
+.form-actions{display:flex;gap:8px;justify-content:flex-end}
+.card .btn{padding:10px 16px;border-radius:10px}
+.hint{font-size:.9rem}
+@keyframes floatIn{0%{opacity:0;transform:translateY(18px) scale(.995)}100%{opacity:1;transform:none}}
+/* subtle button press animation on click */
+.btn:active{transform:translateY(1px) scale(.998)}
+/* small screens: shrink login width and adjust spacing */
+@media (max-width:520px){
+  #loginSection{max-width:92%;padding:18px;margin:18px auto}
+  .admin-header{flex-direction:column;align-items:flex-start;gap:6px}
+  .admin-header h1{font-size:1.1rem}
+}
+.card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,0.05);margin-bottom:18px;transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(15,23,42,0.07)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.stats-row{display:flex;gap:14px;margin:14px 0}
+.stat-box{background:linear-gradient(180deg,var(--glass),var(--card));border-radius:10px;padding:14px;flex:1;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+.stat-title{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+.stat-value{font-size:1.8rem;font-weight:800;color:var(--accent);transition:transform .4s cubic-bezier(.2,.9,.3,1)}
+.stat-value.pulse{animation:statPulse .65s ease}
+@keyframes statPulse{0%{transform:scale(1)}50%{transform:scale(1.14)}100%{transform:scale(1)}}
+.admin-controls{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer;box-shadow:0 8px 20px rgba(79,70,229,0.12);transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(79,70,229,0.14)}
+.btn-outline{background:transparent;border:1px solid #e6e9ef;color:#111;padding:7px 12px;border-radius:8px}
+#rsvpContainer table{width:100%;border-collapse:collapse;background:transparent}
+#rsvpContainer th,#rsvpContainer td{padding:10px;border-bottom:1px solid #f1f5f9;text-align:left}
+#rsvpContainer tr{transition:background .18s ease,transform .18s ease}
+#rsvpContainer tr:hover{background:#fbfdff;transform:translateX(4px)}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1rem 0}
+.media-placeholder{background:#f8fafc;width:100%;height:200px;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#6b7280}
+.media-item{background:#fff;border-radius:8px;padding:8px;display:flex;flex-direction:column;align-items:stretch;opacity:0;transform:translateY(12px);animation:fadeInUp .36s forwards}
+.media-item img,.media-item video{width:100%;height:160px;object-fit:cover;border-radius:6px;transition:transform .2s}
+.media-item:hover img,.media-item:hover video{transform:scale(1.04)}
+@keyframes fadeInUp{to{opacity:1;transform:none}}
+.media-meta{font-size:.9rem;padding:8px 6px;display:flex;justify-content:space-between;align-items:center}
+.media-notification{position:fixed;top:20px;right:20px;background:linear-gradient(90deg,#16a34a,#10b981);color:white;padding:12px 20px;border-radius:6px;z-index:1200;animation:slideIn .28s ease-out,fadeOut .3s ease-in 2.6s forwards}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeOut{to{opacity:0}}
+.loading-indicator{grid-column:1/-1;text-align:center;padding:1rem;background:#f8fafc;border-radius:8px;margin:1rem 0}
+.upload-progress{position:fixed;bottom:20px;right:20px;background:rgba(0,0,0,.8);color:#fff;padding:10px 16px;border-radius:6px;z-index:1100;transition:opacity .24s}
+.hidden{display:none !important}
+.rsvp-filter{margin-bottom:.75rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.rsvp-filter label{font-size:.95rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.rsvp-filter select,.rsvp-filter input[type=search]{padding:8px;border-radius:8px;border:1px solid #e7eef8;background:#fff;min-width:140px}
+
+
+/* Responsive circular stat badges — left aligned with no circle background */
+.stats-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin:14px 0;
+  align-items:flex-start;
+  justify-content:flex-start; /* left align the badges */
+}
+.stat-box{background:transparent;padding:6px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;width:auto}
+.stat-value.stat-circle{display:inline-grid;place-items:center;padding:8px 10px;min-width:48px;aspect-ratio:1/1;border-radius:50%;background:var(--card);box-shadow:0 6px 14px rgba(15,23,42,0.06);font-weight:700;color:var(--accent);font-size:0.95rem;border:1px solid rgba(2,6,23,0.04);text-align:center}
+.stat-icon{position:static;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:currentColor;margin-bottom:6px}
+/* internal label styles (inside the circle) */
+.stat-value .stat-count{display:block;font-size:1.05rem;font-weight:800;line-height:1}
+.stat-value .stat-label{display:block;font-size:0.62rem;color:var(--muted);margin-top:6px}
+.stat-value .stat-sub{display:block;font-size:0.6rem;color:var(--muted);margin-top:2px}
+.stat-box.stat-yes .stat-value.stat-circle{color:#0ea76b}
+.stat-box.stat-yes .stat-icon{background:linear-gradient(180deg,rgba(16,185,129,0.14),rgba(16,185,129,0.06));color:#0ea76b}
+.stat-box.stat-maybe .stat-value.stat-circle{color:#c27807}
+.stat-box.stat-maybe .stat-icon{background:linear-gradient(180deg,rgba(245,158,11,0.12),rgba(245,158,11,0.04));color:#c27807}
+.stat-box.stat-no .stat-value.stat-circle{color:#d44b4b}
+.stat-box.stat-no .stat-icon{background:linear-gradient(180deg,rgba(239,68,68,0.12),rgba(239,68,68,0.04));color:#d44b4b}
+.stat-box.stat-total .stat-value.stat-circle{color:var(--accent)}
+.stat-box.stat-total .stat-icon{background:linear-gradient(180deg,rgba(79,70,229,0.12),rgba(79,70,229,0.06));color:var(--accent)}
+
+/* smaller screens: two per row, then single column (flex-wrap handles wrapping) */
+@media (max-width:800px){.stat-box{flex:0 0 48%;max-width:48%}}
+@media (max-width:460px){
+  .stat-box{flex:0 0 100%;max-width:100%}
+  .stat-value.stat-circle{min-width:40px;font-size:0.86rem;padding:6px 8px}
+  .stat-icon{width:14px;height:14px}
+  .stat-value .stat-label{font-size:0.6rem}
+  .stat-value .stat-sub{font-size:0.55rem}
+}
+
+/* Card entrance stagger inside .cards */
+.cards .card{opacity:0;transform:translateY(12px);animation:cardEnter .42s forwards}
+.cards .card:nth-child(1){animation-delay:80ms}
+.cards .card:nth-child(2){animation-delay:160ms}
+@keyframes cardEnter{to{opacity:1;transform:none}}
+
+/* Print layout */
+@media print{body{background:#fff} .admin-controls,.rsvp-filter{display:none} #rsvpContainer table{border:1px solid #ddd}}
+
+@media (max-width:900px){.cards{grid-template-columns:1fr}.admin-wrapper{padding:12px}}

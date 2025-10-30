@@ -1,0 +1,23 @@
+[
+  {
+    "filename": "wed1.jpg",
+    "type": "image",
+    "title": "Ceremony - Nullie & Janet",
+    "path": "../images/wed1.jpg",
+    "uploadedAt": "2025-12-13T12:34:00Z"
+  },
+  {
+    "filename": "reception1.jpg",
+    "type": "image",
+    "title": "Reception Smile",
+    "path": "../images/reception1.jpg",
+    "uploadedAt": "2025-12-13T15:00:00Z"
+  },
+  {
+    "filename": "dance_clip.mp4",
+    "type": "video",
+    "title": "First Dance (short)",
+    "path": "../media/dance_clip.mp4",
+    "uploadedAt": "2025-12-13T16:20:00Z"
+  }
+]

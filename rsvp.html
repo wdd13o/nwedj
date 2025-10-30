@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSVP — Nullie & Janet Sophie</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav-wrapper">
+    <div class="nav-content">
+      <div class="logo">N & J</div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#story">Our Story</a></li>
+        <li><a href="index.html#details">Wedding Details</a></li>
+        <li><a href="media.html">Gallery</a></li>
+        <li><a href="rsvp.html" class="active">RSVP</a></li>
+        <li><a href="admin/login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="rsvp-card section">
+      <h2>RSVP</h2>
+      <form id="rsvpForm">
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" placeholder="Your full name" required>
+
+        <label for="tel">Telephone</label>
+        <input id="tel" name="tel" type="tel" placeholder="+1 234 567 8900" pattern="[0-9+\s-()]+" title="Please enter a valid phone number">
+
+        <label for="attending">Will you attend?</label>
+        <select id="attending" name="attending">
+          <option value="yes">Yes, will attend</option>
+          <option value="no">No, sadly can't</option>
+          <option value="maybe">Maybe</option>
+        </select>
+
+        <label for="notes">Notes (dietary, message)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Let us know..."></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Send RSVP</button>
+          <button type="button" id="printBtn" class="btn btn-outline">Print</button>
+        </div>
+      </form>
+      <p id="rsvpMessage" class="hidden"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="credits">Designed with love • Nullie & Janet Sophie</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

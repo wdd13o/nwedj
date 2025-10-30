@@ -1,0 +1,476 @@
+/* Gallery and camera styles */
+.capture-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white !important;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+    z-index: 1000;
+}
+
+.capture-button:hover {
+    transform: translateY(-2px);
+}
+
+.capture-button .fas {
+    font-size: 1.2em;
+}
+
+.gallery-filters {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  align-items: start;
+}
+
+.media-thumb{
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.thumb-image{width:100%;height:100%;object-fit:cover;display:block}
+.thumb-video{width:100%;height:100%;object-fit:cover;display:block}
+.thumb-time{position:absolute;left:8px;bottom:6px;background:rgba(0,0,0,0.5);color:#fff;padding:3px 6px;border-radius:6px;font-size:12px}
+
+.thumb-badge{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(180,138,102,0.95);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    margin: 0 5px;
+    border: 2px solid #007bff;
+    background: transparent;
+    color: #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: #007bff;
+    color: white;
+}
+
+/* Event select dropdown next to filters */
+.event-select {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 14px;
+}
+
+.event-select.hidden { display: none !important; }
+
+/* Diagnostics button */
+.diagnostics-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #6c63ff;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 1200;
+  cursor: pointer;
+}
+
+/* Diagnostics modal tweaks */
+.diagnostics-modal .modal-content { max-width: 720px; }
+.diagnostics-modal .modal-body { padding: 1rem; }
+.diagnostics-results-list { display:flex;flex-direction:column;gap:8px;margin-top:8px; }
+.diagnostics-result { padding:8px;border:1px solid #eee;border-radius:6px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff }
+.diagnostics-result small { color:#666 }
+.diagnostics-actions { display:flex;gap:8px }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1001;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal-content img,
+.modal-content video {
+    max-width: 100%;
+    max-height: 90vh;
+    margin: auto;
+    display: block;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+.camera-row {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 1rem;
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#camera,
+#recordingPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#photoCanvas {
+  display: none;
+}
+
+.camera-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+/* Gallery management */
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 1rem;
+  padding: 0 0.5rem;
+}
+
+.storage-info {
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-body {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.manage-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.media-item {
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.media-item.selected {
+  border-color: var(--accent);
+}
+
+.media-item .select-overlay {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-item.selected .select-overlay {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-danger:disabled {
+  background: #dc354580;
+  cursor: not-allowed;
+}
+
+/* Loading and error states */
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  color: var(--accent);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(108, 99, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fff3f3;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  color: #d32f2f;
+  margin: 1rem 0;
+}
+
+.error-message i {
+  font-size: 1.5rem;
+}
+
+.storage-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.storage-error i {
+  font-size: 1rem;
+}
+
+.btn-small {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.retry-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  border: none;
+  background: var(--accent, #6c63ff);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent, #6c63ff);
+  color: var(--accent, #6c63ff);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Media gallery thumbnails */
+.media-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.thumb {
+  width: 50px;
+  height: 50px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--accent, #6c63ff);
+  animation: pop 0.3s ease-out;
+}
+
+.thumb i {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.thumb span {
+  font-size: 0.6rem;
+  color: #666;
+}
+
+/* Camera flash effect */
+.camera-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  animation: flash 0.5s ease-out;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .camera-row {
+    max-width: 100%;
+    border-radius: 0;
+  }
+  
+  .camera-actions {
+    padding: 0 1rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .capture-button{padding:10px 14px;bottom:14px;right:14px;border-radius:22px}
+  .gallery-grid{gap:8px;grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}

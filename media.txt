@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery — Nullie Weds Janet Sophie</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/camera.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav-wrapper">
+    <div class="nav-content">
+      <div class="logo">N & J</div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#story">Our Story</a></li>
+        <li><a href="index.html#details">Wedding Details</a></li>
+        <li><a href="media.html" class="active">Gallery</a></li>
+        <li><a href="rsvp.html">RSVP</a></li>
+        <li><a href="admin/login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main>
+      <section id="gallery" class="section gallery">
+        <h2>Gallery</h2>
+        <p>Capture special moments with photos and videos during the event. Your memories will be shared with the couple. Allow camera access when prompted.</p>
+        <div class="camera-row">
+          <video id="camera" autoplay playsinline></video>
+          <canvas id="photoCanvas" class="hidden"></canvas>
+          <!-- Video recording preview (hidden until recording stops) -->
+          <video id="recordingPreview" class="hidden" controls playsinline></video>
+        </div>
+        <div class="camera-actions">
+          <button id="switchBtn" class="btn btn-outline">Switch Camera</button>
+          <button id="captureBtn" class="btn">Take Photo</button>
+          <button id="recordBtn" class="btn btn-outline">Start Recording</button>
+          <button id="stopRecordBtn" class="btn btn-outline hidden">Stop Recording</button>
+        </div>
+        <div class="gallery-header">
+          <div class="storage-info">
+            <span id="storageUsed">0</span> / <span id="storageLimit">50</span> items stored
+            <div id="storageError" class="storage-error hidden">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span></span>
+            </div>
+          </div>
+          <button id="manageMediaBtn" class="btn btn-outline">
+            <i class="fas fa-cog"></i> Manage Media
+          </button>
+        </div>
+        <!-- Loading indicator -->
+        <div id="mediaLoading" class="loading-indicator hidden">
+          <div class="spinner"></div>
+          <span>Loading media...</span>
+        </div>
+        <!-- Media gallery with indicator icons -->
+        <div id="thumbs" class="media-thumbs" aria-live="polite"></div>
+        <!-- Error message container -->
+        <div id="mediaError" class="error-message hidden">
+          <i class="fas fa-exclamation-circle"></i>
+          <span></span>
+          <button id="retryLoadBtn" class="btn btn-outline btn-small">
+            <i class="fas fa-redo"></i> Retry
+          </button>
+        </div>
+        <!-- Media management modal -->
+        <div id="mediaModal" class="modal hidden">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Manage Media</h3>
+              <button id="closeModal" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div id="mediaGrid" class="manage-media-grid"></div>
+            </div>
+            <div class="modal-footer">
+              <button id="deleteSelectedBtn" class="btn btn-danger" disabled>Delete Selected (<span id="selectedCount">0</span>)</button>
+              <button id="cancelManageBtn" class="btn btn-outline">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="credits">Designed with love • Nullie & Janet Sophie</p>
+    </footer>
+  </div>
+
+  <script src="js/mediaStorage.js"></script>
+  <script src="js/resetDatabase.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/admin-nav.js"></script>
+</body>
+</html>
